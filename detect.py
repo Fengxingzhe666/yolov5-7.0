@@ -259,6 +259,11 @@ def run(
                     confidence = float(conf)
                     confidence_str = f"{confidence:.2f}"
 
+                    # === 这里插入 ↓ =====================================
+                    x1, y1, x2, y2 = map(int, xyxy)  # 左上 (x1,y1)，右下 (x2,y2)
+                    print(f"bbox: x1={x1}, y1={y1}, x2={x2}, y2={y2}")
+                    # ==================================================
+
                     if save_csv:
                         write_to_csv(p.name, label, confidence_str)
 

@@ -5,24 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f68309d7-d339-47c6-bbaf-4198bfb01c35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/camera_stream.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/mmexport1722216925639.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detect_zzk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp45/mmexport1722216925639.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp46/0.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp47/b562f5aa5a4b5288e048e8f0c169e4e1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp47/bus.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp47/mmexport1722216925639.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp47/zidane.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp48/b562f5aa5a4b5288e048e8f0c169e4e1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp48/bus.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp48/mmexport1722216925639.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp48/zidane.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp49/0.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp50/0.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runs/detect/exp51/0.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yolov5s.pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/detect0.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp11/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp12/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp3/b562f5aa5a4b5288e048e8f0c169e4e1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp3/bus.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp3/mmexport1722216925639.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp3/zidane.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp4/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp5/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp6/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp7/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp8/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp9/0.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/detect_zzk.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect_zzk.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +37,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2x9xLwIiALtczlINAY0MfUFUXOS" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -56,6 +54,7 @@
     "Python.camera_stream.executor": "Run",
     "Python.capture_camera_image.executor": "Run",
     "Python.detect.executor": "Debug",
+    "Python.detect0.executor": "Debug",
     "Python.detect_zzk.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -87,21 +86,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/detect_zzk.py</url>
-          <line>152</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/detect_zzk.py</url>
-          <line>245</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

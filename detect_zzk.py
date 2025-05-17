@@ -37,6 +37,7 @@ import sys
 from pathlib import Path
 
 import torch
+import smbus
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
@@ -149,6 +150,12 @@ def run(
         run(source='data/videos/example.mp4', weights='yolov5s.pt', conf_thres=0.4, device='0')
         ```
     """
+
+    device_address = 0x2d  # 设备的 I2C 地址
+    bus = smbus.SMBus(2)  # 使用 I2C 总线 x
+    current_degree = 90 # 舵机初始在90度
+    bus.write_byte_data(device_address,1,current_degree) # 初始化舵机角度
+
     source = 0
     source = str(source)
     save_img = not nosave and not source.endswith(".txt")  # save inference images
@@ -260,6 +267,19 @@ def run(
                     confidence = float(conf)
                     confidence_str = f"{confidence:.2f}"
 
+                    # === 这里插入 ↓ =====================================
+                    x1, y1, x2, y2 = map(int, xyxy)  # 左上 (x1,y1)，右下 (x2,y2)
+                    print(f"bbox: x1={x1}, y1={y1}, x2={x2}, y2={y2}")
+                    # ==================================================
+
+                    # 发送i2c信号
+                    w = im0.shape[1]
+                    next_degree = 30 - 30 * (x1 + x2) / w
+                    if next_degree > 10 or next_degree < -10:
+                        bus.write_byte_data(device_address, 1, round(next_degree) + current_degree)
+                        current_degree += round(next_degree)
+                        print(f"Rotated!current degree:{current_degree}")
+
                     if save_csv:
                         write_to_csv(p.name, label, confidence_str)
 
@@ -280,6 +300,7 @@ def run(
                         annotator.box_label(xyxy, label, color=colors(c, True))
                     if save_crop:
                         save_one_box(xyxy, imc, file=save_dir / "crops" / names[c] / f"{p.stem}.jpg", BGR=True)
+                    break
 
             # Stream results
             im0 = annotator.result()
@@ -368,7 +389,7 @@ def parse_opt():
         ```
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument("--weights", nargs="+", type=str, default=ROOT / "yolov5s.pt", help="model path or triton URL")
+    parser.add_argument("--weights", nargs="+", type=str, default=ROOT / "runs/train/custom_model05/weights/best.pt", help="model path or triton URL")
     # parser.add_argument("--source", type=str, default=ROOT / "data/images", help="file/dir/URL/glob/screen/0(webcam)")
     parser.add_argument("--data", type=str, default=ROOT / "data/coco128.yaml", help="(optional) dataset.yaml path")
     parser.add_argument("--imgsz", "--img", "--img-size", nargs="+", type=int, default=[640], help="inference size h,w")
