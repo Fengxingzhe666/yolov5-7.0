@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f68309d7-d339-47c6-bbaf-4198bfb01c35" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/camera_stream.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/mmexport1722216925639.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/detect_zzk.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp45/mmexport1722216925639.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp46/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp47/b562f5aa5a4b5288e048e8f0c169e4e1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp47/bus.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp47/mmexport1722216925639.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp47/zidane.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp48/b562f5aa5a4b5288e048e8f0c169e4e1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp48/bus.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp48/mmexport1722216925639.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp48/zidane.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp49/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp50/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/detect/exp51/0.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov5s.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2x9xLwIiALtczlINAY0MfUFUXOS" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.camera_stream.executor": "Run",
+    "Python.capture_camera_image.executor": "Run",
+    "Python.detect.executor": "Debug",
+    "Python.detect_zzk.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "E:/git-repositories/yolov5-7.0"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\git-repositories\yolov5-7.0" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f68309d7-d339-47c6-bbaf-4198bfb01c35" name="Changes" comment="" />
+      <created>1747364037878</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1747364037878</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/detect_zzk.py</url>
+          <line>152</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/detect_zzk.py</url>
+          <line>245</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
