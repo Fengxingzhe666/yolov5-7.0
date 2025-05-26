@@ -70,35 +70,35 @@ from utils.torch_utils import select_device, smart_inference_mode
 
 @smart_inference_mode()
 def run(
-    weights=ROOT / "yolov5s.pt",  # model path or triton URL
-    # source=ROOT / "data/images",  # file/dir/URL/glob/screen/0(webcam)
-    data=ROOT / "data/coco128.yaml",  # dataset.yaml path
-    imgsz=(640, 640),  # inference size (height, width)
-    conf_thres=0.25,  # confidence threshold
-    iou_thres=0.45,  # NMS IOU threshold
-    max_det=1000,  # maximum detections per image
-    device="",  # cuda device, i.e. 0 or 0,1,2,3 or cpu
-    view_img=False,  # show results
-    save_txt=False,  # save results to *.txt
-    save_format=0,  # save boxes coordinates in YOLO format or Pascal-VOC format (0 for YOLO and 1 for Pascal-VOC)
-    save_csv=False,  # save results in CSV format
-    save_conf=False,  # save confidences in --save-txt labels
-    save_crop=False,  # save cropped prediction boxes
-    nosave=False,  # do not save images/videos
-    classes=None,  # filter by class: --class 0, or --class 0 2 3
-    agnostic_nms=False,  # class-agnostic NMS
-    augment=False,  # augmented inference
-    visualize=False,  # visualize features
-    update=False,  # update all models
-    project=ROOT / "runs/detect",  # save results to project/name
-    name="exp",  # save results to project/name
-    exist_ok=False,  # existing project/name ok, do not increment
-    line_thickness=3,  # bounding box thickness (pixels)
-    hide_labels=False,  # hide labels
-    hide_conf=False,  # hide confidences
-    half=False,  # use FP16 half-precision inference
-    dnn=False,  # use OpenCV DNN for ONNX inference
-    vid_stride=1,  # video frame-rate stride
+        weights=ROOT / "yolov5s.pt",  # model path or triton URL
+        # source=ROOT / "data/images",  # file/dir/URL/glob/screen/0(webcam)
+        data=ROOT / "data/coco128.yaml",  # dataset.yaml path
+        imgsz=(640, 640),  # inference size (height, width)
+        conf_thres=0.25,  # confidence threshold
+        iou_thres=0.45,  # NMS IOU threshold
+        max_det=1000,  # maximum detections per image
+        device="",  # cuda device, i.e. 0 or 0,1,2,3 or cpu
+        view_img=False,  # show results
+        save_txt=False,  # save results to *.txt
+        save_format=0,  # save boxes coordinates in YOLO format or Pascal-VOC format (0 for YOLO and 1 for Pascal-VOC)
+        save_csv=False,  # save results in CSV format
+        save_conf=False,  # save confidences in --save-txt labels
+        save_crop=False,  # save cropped prediction boxes
+        nosave=False,  # do not save images/videos
+        classes=None,  # filter by class: --class 0, or --class 0 2 3
+        agnostic_nms=False,  # class-agnostic NMS
+        augment=False,  # augmented inference
+        visualize=False,  # visualize features
+        update=False,  # update all models
+        project=ROOT / "runs/detect",  # save results to project/name
+        name="exp",  # save results to project/name
+        exist_ok=False,  # existing project/name ok, do not increment
+        line_thickness=3,  # bounding box thickness (pixels)
+        hide_labels=False,  # hide labels
+        hide_conf=False,  # hide confidences
+        half=False,  # use FP16 half-precision inference
+        dnn=False,  # use OpenCV DNN for ONNX inference
+        vid_stride=1,  # video frame-rate stride
 ):
     """
     Runs YOLOv5 detection inference on various sources like images, videos, directories, streams, etc.
@@ -153,8 +153,10 @@ def run(
 
     device_address = 0x2d  # 设备的 I2C 地址
     bus = smbus.SMBus(2)  # 使用 I2C 总线 x
-    current_degree = 90 # 舵机初始在90度
-    bus.write_byte_data(device_address,1,current_degree) # 初始化舵机角度
+    current_degree = [90, 30]  # 舵机初始在90度
+    bus.write_byte_data(device_address, 1, current_degree[0])  # 初始化舵机角度
+    bus.write_byte_data(device_address, 2, current_degree[1])
+    DEGREE_LIMIT = [[0, 180], [0, 100]]
 
     source = 0
     source = str(source)
@@ -273,12 +275,30 @@ def run(
                     # ==================================================
 
                     # 发送i2c信号
-                    w = im0.shape[1]
-                    next_degree = 30 - 30 * (x1 + x2) / w
-                    if next_degree > 10 or next_degree < -10:
-                        bus.write_byte_data(device_address, 1, round(next_degree) + current_degree)
-                        current_degree += round(next_degree)
-                        print(f"Rotated!current degree:{current_degree}")
+                    w = [im0.shape[1], im0.shape[0]]  # 图片/视频流 尺寸，w[0]表示宽度，w[1]表示高度
+                    deta_degree = [30 - 30 * (x1 + x2) / w[0], 20 - 20 * (y1 + y2) / w[1]]  # 角度变化
+                    next_degree = [round(deta_degree[0]) + current_degree[0], round(deta_degree[1]) + current_degree[1]] # 下一次的目标角度
+                    if deta_degree[0] > 10 or deta_degree[0] < -10:
+                        if next_degree[0] < DEGREE_LIMIT[0][0]:
+                            bus.write_byte_data(device_address, 1, DEGREE_LIMIT[0][0])
+                            current_degree[0] = DEGREE_LIMIT[0][0]
+                        elif next_degree[0] > DEGREE_LIMIT[0][1]:
+                            bus.write_byte_data(device_address, 1, DEGREE_LIMIT[0][1])
+                            current_degree[0] = DEGREE_LIMIT[0][1]
+                        else:
+                            bus.write_byte_data(device_address, 1, next_degree[0])
+                            current_degree[0] += round(deta_degree[0])
+                    if deta_degree[1] > 10 or deta_degree[1] < -10:
+                        if next_degree[1] < DEGREE_LIMIT[1][0]:
+                            bus.write_byte_data(device_address, 2, DEGREE_LIMIT[1][0])
+                            current_degree[1] = DEGREE_LIMIT[1][0]
+                        elif next_degree[1] > DEGREE_LIMIT[1][1]:
+                            bus.write_byte_data(device_address, 1, DEGREE_LIMIT[1][1])
+                            current_degree[1] = DEGREE_LIMIT[1][1]
+                        else:
+                            bus.write_byte_data(device_address, 2, next_degree[1])
+                            current_degree[1] += round(deta_degree[1])
+                    print(f"Rotated!current_degree=[{current_degree[0]},{current_degree[1]}]")
 
                     if save_csv:
                         write_to_csv(p.name, label, confidence_str)
@@ -389,7 +409,8 @@ def parse_opt():
         ```
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument("--weights", nargs="+", type=str, default=ROOT / "runs/train/custom_model05/weights/best.pt", help="model path or triton URL")
+    parser.add_argument("--weights", nargs="+", type=str, default=ROOT / "runs/train/custom_model05/weights/best.pt",
+                        help="model path or triton URL")
     # parser.add_argument("--source", type=str, default=ROOT / "data/images", help="file/dir/URL/glob/screen/0(webcam)")
     parser.add_argument("--data", type=str, default=ROOT / "data/coco128.yaml", help="(optional) dataset.yaml path")
     parser.add_argument("--imgsz", "--img", "--img-size", nargs="+", type=int, default=[640], help="inference size h,w")
