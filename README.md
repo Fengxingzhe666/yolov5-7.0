@@ -12,6 +12,13 @@ detect_zzk.py
   
 capture_camera_image.py
 捕捉摄像头视频流并显示，在ubuntu命令行上运行：  
+  
+make_dataset.py  
+将路径"./calib_imgs"下的所有jpg文件的路径写入文件dataset.txt，供格式转换使用。  
+  
+convert_yolov5.py  
+将ONNX格式转换为RKNN模式，需要dataset.txt中提供若干张图片进行量化。  
+  
 ```
 python3 capture_camera_image.py
 ```

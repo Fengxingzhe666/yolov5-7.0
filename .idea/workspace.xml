@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f68309d7-d339-47c6-bbaf-4198bfb01c35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/serial_comm-i2c.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/train/custom_model05/weights/best.onnx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runs/train/custom_model05/weights/best.torchscript" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detect_zzk.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect_zzk.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

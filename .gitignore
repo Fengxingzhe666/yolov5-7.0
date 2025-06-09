@@ -1,0 +1,4 @@
+runs/detect/*
+calib_imgs/*
+!calib_imgs/1_0_jpeg_jpg.rf.383172111dac9ecb00b81cea26512a91.jpg
+!calib_imgs/1-108-_jpeg.rf.3cee8aca458dd35b1097241e19c7a8d1.jpg
